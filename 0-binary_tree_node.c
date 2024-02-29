@@ -12,7 +12,7 @@ binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
 {
 	binary_tree_t *created_node = NULL;
 
-	created_node = malloc(sizeof(binary_tree));
+	created_node = malloc(sizeof(binary_tree_t));
 	if (created_node)
 	{
 		created_node->parent = parent;
