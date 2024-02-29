@@ -19,26 +19,29 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 	list_node_t *trav_node = NULL;
 	int i = 0;
 
-	level_lists = malloc(sizeof(list_node_t *) * 100);
-	if (level_lists == NULL)
-		return;
-
-	for (i = 0; i < 100; i++)
-		level_lists[i] = NULL;
-
-	binary_tree_preorder_travers(tree, 0, level_lists);
-
-	for (i = 0; i < 100; i++)
+	if (tree && func)
 	{
-		trav_node = level_lists[i];
-		while (trav_node)
+		level_lists = malloc(sizeof(list_node_t *) * 100);
+		if (level_lists == NULL)
+			return;
+
+		for (i = 0; i < 100; i++)
+			level_lists[i] = NULL;
+
+		binary_tree_preorder_travers(tree, 0, level_lists);
+
+		for (i = 0; i < 100; i++)
 		{
-			if ((trav_node->node))
-				func((trav_node->node)->n);
-			trav_node = trav_node->next;
+			trav_node = level_lists[i];
+			while (trav_node)
+			{
+				if ((trav_node->node))
+					func((trav_node->node)->n);
+				trav_node = trav_node->next;
+			}
 		}
+		free_list(level_lists);
 	}
-	free_list(level_lists);
 }
 
 
