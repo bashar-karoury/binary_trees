@@ -32,8 +32,9 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 	{
 		trav_node = level_lists[i];
 		while (trav_node)
-		{
-			func((trav_node->node)->n);
+		{	
+			if ((trav_node->node))
+				func((trav_node->node)->n);
 			trav_node = trav_node->next;
 		}
 	}
@@ -44,9 +45,9 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 void binary_tree_preorder_travers(const binary_tree_t *tree,
 									int level, list_node_t **level_lists)
 {
+	add_back(&(level_lists[level]), (binary_tree_t *)tree);
 	if ((tree))
 	{
-		add_back(&(level_lists[level]), (binary_tree_t *)tree);
 		++level;
 		binary_tree_preorder_travers(tree->left,  level, level_lists);
 		binary_tree_preorder_travers(tree->right, level, level_lists);
