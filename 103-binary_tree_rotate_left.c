@@ -20,16 +20,13 @@ binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree)
 		if (right)
 		{
 			left_of_right = right->left;
-			printf("left of right = %p\n", (void *)left_of_right);
 			right->left = tree;
 			tree->parent = right;
 			tree->right = left_of_right;
 			right->parent = NULL;
-			
 			if (left_of_right)
 				left_of_right->parent = tree;
 		}
-		
 	}
 	return (right);
 }
