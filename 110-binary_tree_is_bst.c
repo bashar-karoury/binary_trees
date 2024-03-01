@@ -17,7 +17,7 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 	binary_tree_t *r = NULL;
 
 	if (tree == NULL)
-		return (1);
+		return (0);
 	if (!check_if_less((binary_tree_t *)tree->right, tree->n))
 		return (0);
 	if (!check_if_greater((binary_tree_t *)tree->left, tree->n))
@@ -41,7 +41,7 @@ int check_if_less(binary_tree_t *tree, int value)
 
 	if (tree == NULL)
 		return (1);
-	if (tree->n < value)
+	if (tree->n <= value)
 		return (0);
 
 	l = tree->left;
@@ -65,7 +65,7 @@ int check_if_greater(binary_tree_t *tree, int value)
 		return (1);
 
 
-	if (tree->n > value)
+	if (tree->n >= value)
 		return (0);
 
 	l = tree->left;
