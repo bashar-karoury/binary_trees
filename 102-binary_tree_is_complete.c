@@ -46,6 +46,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 			{
 				if (null_encountered)
 				{
+					free_list(level_lists);
 					return (0);
 				}
 			}
